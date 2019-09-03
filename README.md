@@ -58,8 +58,12 @@ https://documenter.getpostman.com/view/8661085/SVfTNnCz?version=latest
 
 ## 3. Testes funcionais
 https://www.getpostman.com/collections/b25319ca5778234c9dc3
+
+## 4. Coverage
+![alt text](https://control4sistemas.com.br/zup/coverage.jpeg)
+
  
-## 4. Executando o Projeto
+## 5. Executando o Projeto
 Recomenda-se utilizar IDEA Intellij.
 Após baixar o projeto, para executá-lo será necessário rodar os seguintes comandos dentro da pasta raiz.
 
@@ -68,7 +72,7 @@ $ docker-compose up
 $ mvn clean install   
 $ mvn spring-boot:run 
 ```
-## 5. Testando os serviços
+## 6. Testando os serviços
 Realizar a chamada dos serviços. 
 Para testar os serviços o navegador padrão pode ser utilizado ou se preferir utilizar o software postman.
 
@@ -101,7 +105,7 @@ $ curl http://localhost:8080/poi/remove/5
 ```
 
 
-## 4.Encerrando o docker
+## 7.Encerrando o docker
 ```sh
 $ docker-compose down
 
