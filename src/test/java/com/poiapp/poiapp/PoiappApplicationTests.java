@@ -1,9 +1,11 @@
 package com.poiapp.poiapp;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
+
+import java.util.ArrayList;
 
 import org.assertj.core.api.Assertions;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +24,35 @@ public class PoiappApplicationTests {
 	@Autowired
 	private PoiRepository pr;
 	
+	@Test
+    public void testSetNome()
+    {
+
+        Poi p1 = new Poi();
+        p1.setNome("Ponto1");
+        assertEquals("Ponto1", p1.getNome());
+    }
+	
+	@Test
+    public void testSetPontoX()
+    {
+
+        Poi p2 = new Poi();
+        p2.setPontoX(20);
+        Integer pontoX = 20;
+        assertEquals(pontoX, p2.getPontoX());
+    }
+	
+	@Test
+    public void testSetPontoY()
+    {
+
+        Poi p3 = new Poi();
+        p3.setPontoY(10);
+        Integer pontoY = 10;
+        assertEquals(pontoY, p3.getPontoY());
+    }
+
 	@Test
 	public void testBuscaPorId() throws Exception {
 		
@@ -48,12 +79,52 @@ public class PoiappApplicationTests {
 		Assertions.assertThat(poi.getNome()).isEqualTo("Pub");
 		assertEquals(pontoX, poi.getPontoX());
 		assertEquals(pontoY, poi.getPontoY());
-				
 		
 	}
 	
+	@Test
+	public void testCadastraPoi() throws Exception {
+		Integer novoId = 10;	
+		Poi p = new Poi();
+		p.setId(novoId);
+		p.setNome("Ponto");
+        p.setPontoX(30);
+        p.setPontoY(40);
+        
+        pr.save(p);
+        
+        
+        Iterable<Poi> pois = pr.findAll();
+		
+		ArrayList<Poi> listaPoi = new ArrayList<>();
+		
+		for(Poi poi: pois){
+						
+			if(poi.getNome().equals(p.getNome()) ) {
+				
+				Assertions.assertThat(poi.getNome()).isEqualTo(p.getNome());
+				assertEquals(p.getPontoX(), poi.getPontoX());
+				assertEquals(p.getPontoY(), poi.getPontoY());
+			}
+			
+		}              	
+	}
 
+	@Test
+	public void testDeletaPoi() throws Exception {
+			
+		Poi p = new Poi();
+		p.setId(99);
+		p.setNome("Ponto");
+        p.setPontoX(30);
+        p.setPontoY(40);
+        
+        pr.delete(p);
+        
+        Poi poi = pr.findById(p.getId());
+        
+        assertNull(poi);
+	}
 	
-	
-
 }
+
