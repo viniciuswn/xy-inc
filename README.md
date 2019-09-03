@@ -72,16 +72,6 @@ $ mvn spring-boot:run
 Realizar a chamada dos serviços. 
 Para testar os serviços o navegador padrão pode ser utilizado ou se preferir utilizar o software postman.
 
-GET / - Listar todos os ponto de encontro 
-```sh
-$ curl localhost:8080/poi/listaTodos
-```
-
-GET - Busca todos os Pontos de Encontro com uma distância máxima = 10
-```sh
-$ curl http://localhost:8080/poi?pontoX=20&pontoY=10&dMax=10
-```
-
 POST - Cria um novo Ponto de Encontro 
 ```sh
 $ curl http://localhost:8080/poi
@@ -94,6 +84,22 @@ Inserir no body:
 }
 
 ```
+
+GET - Listar todos os ponto de encontro 
+```sh
+$ curl localhost:8080/poi/listaTodos
+```
+
+GET - Busca todos os Pontos de Encontro com uma distância máxima = 10
+```sh
+$ curl http://localhost:8080/poi?pontoX=20&pontoY=10&dMax=10
+```
+
+DELETE - Remove um Ponto de Encontro da base de dados
+```sh
+$ curl http://localhost:8080/poi/remove/5
+```
+
 
 ## 4.Encerrando o docker
 ```sh
