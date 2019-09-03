@@ -52,52 +52,50 @@ Instalar as seguintes ferramentas:
     3. Docker compose
     
 O projeto utiliza o banco Mysql.
+
+## 2. Documentação API
+https://documenter.getpostman.com/view/8661085/SVfTNnCz?version=latest
+
+## 3. Testes funcionais
+https://www.getpostman.com/collections/b25319ca5778234c9dc3
  
-## 2. Executando o Projeto
- IDEA Intellij pode ser recomendado
-Após baixar o projeto, para executá-lo é necessário rodar os seguintes comandos dentro da pasta raiz.
+## 4. Executando o Projeto
+Recomenda-se utilizar IDEA Intellij.
+Após baixar o projeto, para executá-lo será necessário rodar os seguintes comandos dentro da pasta raiz.
 
 ```sh
 $ docker-compose up   
 $ mvn clean install   
 $ mvn spring-boot:run 
 ```
-## 3. Testando os serviços
+## 5. Testando os serviços
 Realizar a chamada dos serviços. 
 Para testar os serviços o navegador padrão pode ser utilizado ou se preferir utilizar o software postman.
-
 
 GET / - Listar todos os ponto de encontro 
 ```sh
 $ curl localhost:8080/poi/listaTodos
-
 ```
 
-GET - Busca todos os POIs com uma max-dist= 10 
+GET - Busca todos os Pontos de Encontro com uma distância máxima = 10
 ```sh
-No postman:
-$ curl http://localhost:8080/pois/distance?coordinateReferenceX=20&coordinateReferenceY=10&distance=10
-
-No navegador:
-
+$ curl http://localhost:8080/poi?pontoX=20&pontoY=10&dMax=10
 ```
 
-POST - Cria um novo POIs 
-No postman:
+POST - Cria um novo Ponto de Encontro 
 ```sh
-$ curl -H "Content-Type: application/json" -X POST -d '
+$ curl http://localhost:8080/poi
 
-http://localhost:8080/pois
-
+Inserir no body:
 {  
-  "nome": "ZupTI",
-  "pontoX": 23, 
-  "pontoY": 4
+  "nome": "Novo Ponto",
+  "pontoX": 25, 
+  "pontoY": 50
 }
 
 ```
 
-## 4.Encerrar o docker
+## 4.Encerrando o docker
 ```sh
 $ docker-compose down
 
